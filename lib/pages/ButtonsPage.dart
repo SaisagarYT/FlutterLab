@@ -30,15 +30,26 @@ class _ButtonspageState extends State<Buttonspage> {
               onTap: () {
                 Navigator.pushNamed(context, '/home');
               },
-              child: Experiments(title: "Experiemnt1"),
+              child: Experiments(title: "Experiemnt2"),
             ),
-            Experiments(title: "Experiemnt2"),
-            Experiments(title: "Experiemnt3"),
-            Experiments(title: "Experiemnt4"),
-            Experiments(title: "Experiemnt5"),
+            GestureDetector(
+              onTap: () => Navigator.pushNamed(context, '/exp2'),
+              child: Experiments(title: "Experiemnt3"),
+            ),
+            GestureDetector(
+              onTap: () => Navigator.pushNamed(context, '/exp3'),
+              child: Experiments(title: "Experiemnt4"),
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, '/exp4');
+              },
+              child: Experiments(title: "Experiemnt5"),
+            ),
             Experiments(title: "Experiemnt6"),
             Experiments(title: "Experiemnt7"),
             Experiments(title: "Experiemnt8"),
+            Experiments(title: "Experiemnt9"),
           ],
         ),
       ),

@@ -11,9 +11,18 @@ class Startpage extends StatefulWidget {
 }
 
 class _StartpageState extends State<Startpage> {
+  static bool animation = false;
   @override
   void initState() {
     context.read<SplashBloc>().add(DisplaySplashScreenFor3Seconds());
+    Future.delayed(
+      Duration(seconds: 1),
+      () => {
+        setState(() {
+          animation = true;
+        }),
+      },
+    );
     super.initState();
   }
 
@@ -43,9 +52,22 @@ class _StartpageState extends State<Startpage> {
               SizedBox(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height,
-                child: AnimatedContainer(
-                  duration: Duration(seconds: 3),
-                  child: Image.asset(AppImages.flutterIcon, scale: 6),
+                child: Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(AppImages.flutterIcon, scale: 6),
+                      AnimatedDefaultTextStyle(
+                        style: TextStyle(
+                          fontSize: animation ? 25 : 0,
+                          color: Colors.black,
+                        ),
+                        duration: Duration(seconds: 1),
+                        curve: Curves.fastOutSlowIn,
+                        child: Text("Flutter\nExperiments"),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],
